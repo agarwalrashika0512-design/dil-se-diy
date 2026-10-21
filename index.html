@@ -8,7 +8,7 @@ $('generate').onclick=()=>{if(!total()){alert('Please select at least one produc
 async function copy(t){try{await navigator.clipboard.writeText(t);alert('Copied!')}catch(e){prompt('Copy this text:',t)}}$('copyUPI').onclick=()=>copy('6378809475@ptsbi');$('copyOrder').onclick=()=>copy(orderText);
 
 // PASTE YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL BELOW.
-const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwupaLtUzjsEaq0b1dYzGPByDhdiAMc3Z8G_qDODN_te3P5S5MOb8LPRHZiudI-4MJvtA/exec;
+const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwupaLtUzjsEaq0b1dYzGPByDhdiAMc3Z8G_qDODN_te3P5S5MOb8LPRHZiudI-4MJvtA/exec';
 let currentOrderRef = '', currentSnapshot = '', submissionPending = false;
 const oldGenerate = $('generate').onclick;
 $('generate').onclick = function(){ oldGenerate(); if($('payment').classList.contains('visible')) {currentSnapshot=JSON.stringify([qty,$('customer').value,$('phone').value,$('letter').value,$('colours').value,$('address').value,flowerInput.files[0]?.name||'']);const match=orderText.match(/Order reference: (DSD[A-Z0-9]+)/);currentOrderRef=match?match[1]:''; $('submitStatus').textContent='After paying, enter your UPI transaction reference and submit your order.';} };
