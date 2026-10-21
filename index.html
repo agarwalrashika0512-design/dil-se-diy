@@ -20,29 +20,197 @@ function readPhotoCompressed(file){
   img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Unable to read reference photo'))};img.src=url;
  });
 }
-$('submitOrder').onclick=async()=>{
- if(submissionPending)return;
- if(!ORDER_ENDPOINT.startsWith('https://script.google.com/macros/s/')){alert('Store owner setup incomplete: connect the Google Sheets order endpoint first.');return}
- if(!$('payment').classList.contains('visible')||!currentOrderRef||currentSnapshot!==JSON.stringify([qty,$('customer').value,$('phone').value,$('letter').value,$('colours').value,$('address').value,flowerInput.files[0]?.name||''])){alert('Please generate your payment QR again.');return}
- const utr=$('reference').value.trim();
- if(!/^[A-Za-z0-9-]{6,40}$/.test(utr)){alert('Please enter a valid UPI transaction reference (at least 6 characters).');return}
- const btn=$('submitOrder'),status=$('submitStatus');submissionPending=true;btn.disabled=true;status.textContent='Uploading order and photo… Please wait.';
- try{
-  const photo=await readPhotoCompressed(bouquetSelected()?flowerInput.files[0]:null);
-  const payload={orderId:currentOrderRef,name:$('customer').value.trim(),phone:$('phone').value.trim(),items:products.map((p,i)=>({name:p[0],quantity:qty[i]})).filter(x=>x.quantity),letter:$('letter').value.trim(),colours:$('colours').value.trim(),address:$('address').value.trim(),total:total(),utr,photo,website:location.href};
-  // Hidden iframe form submission avoids browser cross-origin fetch restrictions with Apps Script.
-  const frame=document.createElement('iframe');frame.name='dsd_submit_'+Date.now();frame.style.display='none';document.body.appendChild(frame);
-  const form=document.createElement('form');form.method='POST';form.action=ORDER_ENDPOINT;form.target=frame.name;form.style.display='none';
-  const field=document.createElement('textarea');field.name='payload';field.value=JSON.stringify(payload);form.appendChild(field);document.body.appendChild(form);
-  let finished=false;
-  const handler=(ev)=>{
-   if(!ev.data||ev.data.type!=='DSD_ORDER_RESULT'||ev.data.orderId!==currentOrderRef)return;
-   // Only the iframe we created can send an accepted response.
-   if(ev.source!==frame.contentWindow)return;
-   finished=true;window.removeEventListener('message',handler);clearTimeout(timer);form.remove();
-   if(ev.data.ok){status.textContent='✓ Order '+currentOrderRef+' saved to Dil Se DIY! Payment is pending verification.';btn.textContent='Order submitted';}
-   else{status.textContent='Order could not be confirmed: '+(ev.data.error||'Unknown error')+'. Please contact Dil Se DIY with your order reference.';btn.disabled=false;submissionPending=false}
+function checkOrderSaved(orderId) {
+  return new Promise((resolve, reject) => {
+    const callback = 'DSDcallback' +
+      Date.now() + Math.random().toString(36).slice(2);
+
+    const script = document.createElement('script');
+    let completed = false;
+
+    const finish = (result, error) => {
+      if (completed) return;
+      completed = true;
+      clearTimeout(timer);
+      delete window[callback];
+      script.remove();
+      if (error) reject(error);
+      else resolve(result);
+    };
+
+    window[callback] = data => finish(data);
+
+    const timer = setTimeout(() => {
+      finish(null, new Error('Confirmation check timed out'));
+    }, 10000);
+
+    script.onerror = () => {
+      finish(null, new Error('Unable to check order'));
+    };
+
+    script.src = ORDER_ENDPOINT +
+      '?action=checkOrder' +
+      '&orderId=' + encodeURIComponent(orderId) +
+      '&callback=' + encodeURIComponent(callback);
+
+    document.body.appendChild(script);
+  });
+}
+
+$('submitOrder').onclick = async () => {
+  if (submissionPending) return;
+
+  if (!ORDER_ENDPOINT.startsWith('https://script.google.com/macros/s/')) {
+    alert('Store owner setup incomplete.');
+    return;
+  }
+
+  const snapshot = JSON.stringify([
+    qty, $('customer').value, $('phone').value,
+    $('letter').value, $('colours').value,
+    $('address').value, flowerInput.files[0]?.name || ''
+  ]);
+
+  if (!$('payment').classList.contains('visible') ||
+      !currentOrderRef || currentSnapshot !== snapshot) {
+    alert('Please generate your payment QR again.');
+    return;
+  }
+
+  const utr = $('reference').value.trim();
+
+  if (!/^[A-Za-z0-9-]{6,40}$/.test(utr)) {
+    alert('Please enter a valid UPI transaction reference.');
+    return;
+  }
+
+  const btn = $('submitOrder');
+  const status = $('submitStatus');
+  const orderId = currentOrderRef;
+
+  submissionPending = true;
+  btn.disabled = true;
+
+  const confirmSaved = () => {
+    status.textContent = '✓ Order ' + orderId +
+      ' received by Dil Se DIY! Payment pending verification.';
+    btn.textContent = 'Order submitted';
+    btn.disabled = true;
+    submissionPending = true;
+    localStorage.setItem('dsd_submitted_' + orderId, 'true');
   };
+
+  const checkWithRetries = async () => {
+    for (let attempt = 0; attempt < 5; attempt++) {
+      try {
+        const result = await checkOrderSaved(orderId);
+        if (result && result.found) {
+          confirmSaved();
+          return true;
+        }
+      } catch (e) {
+        console.warn('Confirmation check:', e.message);
+      }
+
+      if (attempt < 4) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+    }
+    return false;
+  };
+
+  // Check before submitting, in case this order was
+  // already saved during an earlier attempt.
+  status.textContent = 'Checking existing order…';
+
+  if (await checkWithRetries()) return;
+
+  // Do not resubmit an order that was already sent
+  // from this browser.
+  const sentKey = 'dsd_sent_' + orderId;
+
+  if (localStorage.getItem(sentKey)) {
+    status.textContent =
+      'Order may already be saved. Confirmation unavailable. ' +
+      'Please contact Dil Se DIY with order ID ' + orderId +
+      '. Do not submit again.';
+    return;
+  }
+
+  try {
+    status.textContent = 'Uploading order and photo…';
+
+    const photo = await readPhotoCompressed(
+      bouquetSelected() ? flowerInput.files[0] : null
+    );
+
+    const payload = {
+      orderId,
+      name: $('customer').value.trim(),
+      phone: $('phone').value.trim(),
+      items: products.map((p, i) => ({
+        name: p[0],
+        quantity: qty[i]
+      })).filter(x => x.quantity),
+      letter: $('letter').value.trim(),
+      colours: $('colours').value.trim(),
+      address: $('address').value.trim(),
+      total: total(),
+      utr,
+      photo,
+      website: location.href
+    };
+
+    const frame = document.createElement('iframe');
+    frame.name = 'dsd_submit_' + Date.now();
+    frame.style.display = 'none';
+    document.body.appendChild(frame);
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = ORDER_ENDPOINT;
+    form.target = frame.name;
+    form.style.display = 'none';
+
+    const field = document.createElement('textarea');
+    field.name = 'payload';
+    field.value = JSON.stringify(payload);
+    form.appendChild(field);
+    document.body.appendChild(form);
+
+    // Remember that this order has been sent.
+    // A missing confirmation must never trigger
+    // another automatic submission.
+    localStorage.setItem(sentKey, 'true');
+
+    form.submit();
+
+    // Wait for Google Apps Script to save the row.
+    await new Promise(resolve => setTimeout(resolve, 4000));
+
+    status.textContent = 'Verifying your order…';
+
+    if (await checkWithRetries()) {
+      form.remove();
+      frame.remove();
+      return;
+    }
+
+    status.textContent =
+      'Order confirmation is temporarily unavailable. ' +
+      'Your order may have been received. ' +
+      'Please contact Dil Se DIY with order ID ' +
+      orderId + '. Do not submit again.';
+
+    form.remove();
+    frame.remove();
+
+  } catch (e) {
+    status.textContent =
+      'Could not complete order processing: ' + e.message +
+      '. Check with Dil Se DIY before trying again.';
+  }
+};
   window.addEventListener('message',handler);
   const timer=setTimeout(()=>{if(finished)return;window.removeEventListener('message',handler);status.textContent='No confirmation received. Do not submit again yet—ask Dil Se DIY to check order '+currentOrderRef+' in the sheet to avoid duplicates.';btn.disabled=false;submissionPending=false},30000);
   form.submit();
