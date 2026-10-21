@@ -211,9 +211,4 @@ $('submitOrder').onclick = async () => {
       '. Check with Dil Se DIY before trying again.';
   }
 };
-  window.addEventListener('message',handler);
-  const timer=setTimeout(()=>{if(finished)return;window.removeEventListener('message',handler);status.textContent='No confirmation received. Do not submit again yet—ask Dil Se DIY to check order '+currentOrderRef+' in the sheet to avoid duplicates.';btn.disabled=false;submissionPending=false},30000);
-  form.submit();
- }catch(e){status.textContent='Could not prepare the photo: '+e.message;btn.disabled=false;submissionPending=false}
-};
 </script></body></html>
