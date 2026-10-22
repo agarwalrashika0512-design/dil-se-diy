@@ -1,245 +1,44 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#334d42"><meta name="description" content="Dil Se DIY — thoughtful handmade keychains, bouquets and gifts. Choose your favourites and customise your order."><title>Dil Se DIY — Small Things. Big Joy.</title><style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
-:root{--ink:#222420;--paper:#f4f2eb;--card:#fcfbf6;--muted:#71766d;--line:#dcded5;--green:#334d42;--lime:#d9edac;--orange:#cf714b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}button,input,textarea{font:inherit}a{color:inherit;text-decoration:none}
-.site-nav{height:76px;padding:0 clamp(20px,5vw,80px);display:flex;justify-content:space-between;align-items:center;background:var(--paper);border-bottom:1px solid var(--line)}.wordmark{font-family:Manrope,sans-serif;font-size:21px;letter-spacing:-.07em;font-weight:800}.wordmark span{color:var(--orange)}.nav-right{display:flex;align-items:center;gap:28px}.nav-note,.eyebrow,.micro,.product-index{font-family:Manrope,sans-serif;text-transform:uppercase;letter-spacing:.17em;font-size:10px;font-weight:800}.nav-note{color:var(--muted)}.nav-cta{background:var(--ink);color:white;border-radius:100px;padding:13px 20px;font-size:12px;font-weight:700;transition:background .2s}.nav-cta:hover{background:var(--green)}
-.hero{min-height:640px;display:grid;grid-template-columns:1.08fr .92fr;overflow:hidden;background:var(--green);color:var(--paper)}.hero-copy{padding:clamp(40px,6vw,95px) clamp(25px,6vw,96px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;position:relative}.hero-copy:after{content:'✳';position:absolute;right:7%;top:12%;font-size:80px;color:var(--lime);opacity:.85;transform:rotate(-12deg)}.eyebrow{color:var(--lime);margin:0 0 30px}.hero h1{font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(65px,7.3vw,123px);line-height:.96;letter-spacing:-.09em;margin:0;max-width:800px}.hero h1 em{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.045em;color:var(--lime)}.hero-lede{font-size:16px;line-height:1.8;max-width:400px;color:#d8e0d7;margin:32px 0 32px}.hero-link{display:inline-flex;align-items:center;gap:20px;background:var(--lime);color:var(--ink);padding:9px 10px 9px 24px;border-radius:100px;font-size:13px;font-weight:800}.hero-link span{display:grid;place-items:center;background:var(--green);color:white;border-radius:50%;width:38px;height:38px;font-size:20px}.hero-art{position:relative;min-height:500px;overflow:hidden;background:#d8c8ae}.hero-art img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center;filter:saturate(.84)}.hero-art:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#182c1d13 20%,#152c1b8a 100%)}.hero-stamp{position:absolute;z-index:1;right:25px;top:27px;background:var(--paper);color:var(--ink);border-radius:50%;height:118px;width:118px;display:grid;place-items:center;text-align:center;transform:rotate(13deg);font-family:Manrope;font-size:11px;letter-spacing:.08em;font-weight:800;line-height:1.5}.hero-caption{position:absolute;z-index:1;left:35px;bottom:34px;color:#fff;font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
-.ticker{background:var(--lime);padding:16px 20px;text-align:center;font-family:Manrope,sans-serif;text-transform:uppercase;font-size:11px;letter-spacing:.19em;font-weight:800;line-height:1.7}.ticker span{margin:0 22px;color:#7b8e56}
-main{max-width:1320px;margin:auto;padding:0 clamp(18px,4vw,64px) 100px}.intro{padding:100px 0 40px;display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:end}.micro{color:var(--orange);margin-bottom:16px}.intro h2{font-family:Manrope,sans-serif;font-size:clamp(38px,5.4vw,75px);letter-spacing:-.075em;line-height:1.05;margin:0;font-weight:800}.intro h2 em{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.035em;color:var(--green)}.intro p{font-size:15px;line-height:1.85;color:var(--muted);max-width:340px;margin:0 0 4px}
-.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.product{min-width:0;display:flex;flex-direction:column;padding:0 0 18px;border-bottom:1px solid #cfd3c9;transition:transform .25s}.product:hover{transform:translateY(-3px)}.emoji{width:100%;height:clamp(220px,28vw,370px);display:flex;align-items:center;justify-content:center;font-size:85px;background:#e9e7dc;overflow:hidden;position:relative}.product:nth-child(4n+2) .emoji{background:#e6e9df}.product:nth-child(4n+3) .emoji{background:#ebe2d9}.product:nth-child(4n) .emoji{background:#e8e3d7}.product-photo{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:saturate(.9)}.product:hover .product-photo{transform:scale(1.045)}.product h3{font-family:Manrope,sans-serif;font-size:17px;letter-spacing:-.035em;margin:17px 0 5px;font-weight:800;min-height:24px}.price{font-size:15px;color:#5e665b;font-weight:700}.qty{margin-top:16px;display:flex;gap:13px;align-items:center}.qty button{width:38px;height:38px;background:transparent;border:1px solid #a7b0a5;border-radius:50%;cursor:pointer;font-size:22px;color:var(--ink);transition:background .2s}.qty button:hover{background:var(--lime)}.qty output{min-width:20px;text-align:center;font-weight:800;font-size:14px}
-.story{margin:95px 0 0;background:#e8e6d9;padding:clamp(30px,6vw,75px);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.story .micro{color:#a35b3f}.story h2{font-family:Manrope,sans-serif;font-size:clamp(35px,4.8vw,64px);letter-spacing:-.075em;line-height:1.05;margin:0}.story h2 em{font-family:'Instrument Serif',serif;font-weight:400;color:#54715b}.story p{font-size:15px;line-height:1.9;max-width:400px;color:#60685e}.story-mark{justify-self:center;font-size:clamp(100px,20vw,270px);color:#7d927d;font-family:'Instrument Serif',serif;line-height:1;transform:rotate(-13deg)}
-.panel{margin-top:65px;padding:clamp(25px,5vw,65px);background:var(--card);border:1px solid var(--line)}.panel h2{font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,52px);letter-spacing:-.065em;margin:0 0 10px;line-height:1.1}.panel>.hint{color:var(--muted)}label{display:block;margin:20px 0 8px;font-size:12px;font-weight:800;letter-spacing:.02em}input,textarea{width:100%;padding:15px 16px;background:#fff;border:1px solid #d7dcd2;border-radius:3px;color:var(--ink);font-size:14px;outline:none}input:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 2px #d6e4d6}textarea{min-height:100px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:22px}.small{font-size:12px;line-height:1.7;color:var(--muted)}.total{margin-top:30px;background:#edf0e7;padding:22px 25px;display:flex;align-items:center;justify-content:space-between;gap:15px}.total strong{font-family:Manrope;font-size:31px;letter-spacing:-.05em}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.button{display:inline-block;background:var(--green);color:white;border:1px solid var(--green);padding:15px 23px;border-radius:3px;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s,transform .2s}.button:hover:not(:disabled){background:#233a30;transform:translateY(-2px)}.button:disabled{opacity:.5;cursor:not-allowed}.secondary{background:transparent;color:var(--green)}.secondary:hover:not(:disabled){background:#eaf0e9}.pay{text-align:center}.pay #qr{display:inline-flex;padding:18px;background:white;border:1px solid var(--line);margin:22px auto}.notice{padding:18px;background:#f3eee2;border:1px solid #e6ddcc;text-align:left;font-size:13px;line-height:1.7}.summary{text-align:left;background:#eff0e8;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.8}.bouquet-reference{background:#f0f2e9!important;border-color:#dce2d8!important}#payment{display:none}#payment.visible{display:block}
-footer{padding:60px clamp(20px,5vw,80px) 35px;background:var(--ink);color:#f1f0e8}.footer-top{display:flex;justify-content:space-between;align-items:end;gap:30px}.footer-brand{font-family:Manrope,sans-serif;font-size:clamp(45px,9vw,130px);font-weight:800;letter-spacing:-.09em;line-height:1}.footer-top p{max-width:210px;color:#b5bdb2;line-height:1.8;font-size:13px}.footer-bottom{border-top:1px solid #50574f;margin-top:50px;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#aeb6aa;font-size:12px}
-@media(max-width:950px){.hero{grid-template-columns:1fr 1fr;min-height:530px}.hero h1{font-size:clamp(55px,8vw,80px)}.hero-copy{padding:45px 30px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.emoji{height:clamp(230px,40vw,400px)}}
-@media(max-width:650px){.site-nav{height:66px;padding:0 18px}.nav-note{display:none}.wordmark{font-size:19px}.hero{grid-template-columns:1fr}.hero-copy{min-height:460px;padding:48px 25px}.hero h1{font-size:clamp(62px,14vw,95px)}.hero-art{min-height:370px}.hero-stamp{height:92px;width:92px;font-size:9px}.hero-caption{left:22px;bottom:20px}.ticker{font-size:9px;padding:13px 6px}.ticker span{margin:0 8px}main{padding:0 15px 60px}.intro{grid-template-columns:1fr;padding:65px 0 30px;gap:18px}.intro h2{font-size:clamp(41px,10vw,62px)}.intro p{font-size:14px}.products{gap:14px}.emoji{height:clamp(155px,42vw,260px)}.product h3{font-size:14px;line-height:1.4;min-height:40px}.price{font-size:14px}.qty button{width:34px;height:34px}.story{margin-top:65px;grid-template-columns:1fr;gap:10px;padding:30px}.story-mark{font-size:120px;justify-self:end}.panel{padding:25px 18px;margin-top:40px}.row{grid-template-columns:1fr;gap:0}.actions .button{width:100%;text-align:center}.total strong{font-size:25px}.footer-top{display:block}.footer-bottom{flex-direction:column;gap:6px}.footer-brand{font-size:clamp(48px,12vw,75px)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
-
-</style></head><body><nav class="site-nav"><a href="#top" class="wordmark" aria-label="Dil Se DIY home">dil se diy<span>✳</span></a><div class="nav-right"><span class="nav-note">MADE SLOWLY. GIFTED HAPPILY.</span><a class="nav-cta" href="#collection">Shop the edit ↗</a></div></nav>
-<header class="hero" id="top"><div class="hero-copy"><p class="eyebrow">HANDMADE, NOT MASS-MADE / EST. 2026</p><h1>Small<br>things.<br><em>Big joy.</em></h1><p class="hero-lede">Little keepsakes with a lot of personality. Made by hand, picked by you, and meant to make someone's day.</p><a class="hero-link" href="#collection">Explore the collection <span>↗</span></a></div><div class="hero-art"><img src="images/double-flower.jpg?v=20261022-new" alt="Handmade flower bouquet from Dil Se DIY"><div class="hero-stamp">NOT JUST<br>A GIFT.<br>A FEELING. ✳</div><div class="hero-caption">01 / THE HANDMADE COLLECTION</div></div></header>
-<div class="ticker">MADE WITH INTENTION <span>✳</span> CUSTOMISED FOR YOU <span>✳</span> LITTLE THINGS, LOTS OF LOVE</div><main><section class="intro" id="collection"><div><div class="micro">01 / THE COLLECTION</div><h2>Good things<br>come in <em>small packages.</em></h2></div><p>Meet the little things worth keeping. Choose a favourite, pick your colours, and we'll make it yours.</p></section><div id="products" class="products"></div><section class="story"><div><div class="micro">02 / THE THOUGHT BEHIND IT</div><h2>Made by hand.<br><em>Meant for someone.</em></h2><p>We believe a gift doesn't need to be big to feel special. Every Dil Se DIY piece is crafted with care, curiosity, and a little bit of joy.</p></div><div class="story-mark" aria-hidden="true">✳</div></section><section class="panel"><h2>Personalise your order</h2><div class="row"><div><label for="customer">Your name *</label><input id="customer" autocomplete="name" placeholder="Full name" required></div><div><label for="phone">Phone number *</label><input id="phone" type="tel" inputmode="tel" placeholder="10-digit mobile number" required></div></div><label for="letter">Letter(s) for customisable letter keychain</label><input id="letter" maxlength="120" placeholder="e.g. A × 2, R × 1"><label for="colours">Colour preferences / customisation</label><textarea id="colours" placeholder="Tell us which colours you would like for each item"></textarea><div class="bouquet-reference" id="bouquetReference" style="display:none;margin-top:16px;padding:16px;background:#fff1f4;border:1px solid #f1dbe2;border-radius:14px"><label for="flowerPhoto">Upload a reference photo for your desired bouquet flower (optional)</label><p class="small">Select a picture showing the flower style you want us to make. JPG, PNG or WebP, maximum 8 MB. Your photo will be uploaded securely to the Dil Se DIY order folder when you submit your order.</p><input id="flowerPhoto" type="file" accept="image/jpeg,image/png,image/webp" style="padding:10px;background:white"><img id="flowerPreview" alt="Selected bouquet flower reference preview" style="display:none;width:100%;max-width:260px;max-height:240px;object-fit:contain;border-radius:12px;margin-top:12px;background:white"><p id="flowerPhotoStatus" class="small" aria-live="polite"></p></div><label for="address">Delivery / pickup details</label><textarea id="address" placeholder="Address, hostel, pickup arrangement or other delivery instructions"></textarea><div class="total"><span>Your total</span><strong id="total">₹0</strong></div><div class="actions"><button class="button" id="generate">Generate my payment QR →</button></div></section><section id="payment" class="panel pay" aria-live="polite"><h2>Pay for your order ♡</h2><p class="hint">Scan this QR in a UPI app. The amount is pre-filled.</p><div id="qr"></div><div class="total"><span>Amount to pay</span><strong id="paytotal">₹0</strong></div><p class="small">Payee: <b>AMISHA NAINWANI</b><br>UPI: <b>6378809475@ptsbi</b></p><div class="actions"><a id="upiLink" class="button" style="text-decoration:none;flex:1" href="#">Open UPI app</a><button id="copyUPI" class="button secondary" type="button">Copy UPI ID</button></div><p class="notice">Before paying, verify the recipient name and amount in your UPI app. Some apps may not honour a pre-filled amount; enter the displayed total if needed. A generated QR is not proof of payment.</p><h3>Your order summary</h3><div id="summary" class="summary"></div><div class="actions"><button id="copyOrder" class="button secondary" type="button">Copy order details</button></div><label for="reference" style="text-align:left">UPI transaction reference (UTR) after payment</label><input id="reference" placeholder="Enter transaction ID / UTR"><button id="submitOrder" class="button" style="margin-top:14px" type="button">Submit order to Dil Se DIY</button><p id="submitStatus" class="small" role="status" aria-live="polite">After making payment, enter your UPI transaction reference and submit. We will save your order and bouquet reference photo together. Payment is verified manually.</p><p class="small">Please submit only once. Save your order reference until we confirm your order.</p></section></main><footer><div class="footer-top"><div class="footer-brand">dil se diy<span style="color:var(--lime)">✳</span></div><p>Little things, made with a whole lot of heart. Thoughtful gifts, handmade for you.</p></div><div class="footer-bottom"><span>© 2026 DIL SE DIY — MADE WITH INTENTION.</span><span>HANDMADE · CUSTOMISABLE · MADE TO ORDER</span></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="window.qrLoadFailed=true"></script><script>
-const products=[['Flower Keychain',49,'🌸'],['Heart Keychain',39,'💗'],['Grapes Keychain',39,'🍇'],['Tulip Bouquet Keychain',49,'🌷'],['Customisable Letter Keychain',49,'🔤'],['cherry Keychain',39,'🌹'],['Ribbon Bow',49,'🎀'],['Teddy Bear Keychain',49,'🧸'],['Evil Eye',39,'🧿'],['Single Flower Bouquet',150,'💐'],['Double Flower Bouquet',200,'💐'],['Triple Flower Bouquet',280,'💐']];
-const productPhotos = [
-  'flower-keychain',
-  'heart-keychain',
-  'grapes-keychain',
-  'tulip-keychain',
-  'letter-keychain',
-  'rose-keychain',
-  'bow-keychain',
-  'teddy-bear',
-  'evil-eye',
-  'single-flower',
-  'double-flower',
-  null
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dil Se DIY | Thoughtfully Handmade</title>
+<style>
+:root{--bg:#f8f6f1;--paper:#fffefa;--ink:#292c29;--muted:#77766f;--line:#e3ded4;--accent:#756d59}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}header{padding:22px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-family:Georgia,serif;font-size:25px;letter-spacing:.05em}a{color:inherit;text-decoration:none}nav a{font-size:13px;letter-spacing:.1em;text-transform:uppercase}.hero{text-align:center;padding:90px 20px 80px;background:#efebe3}.eyebrow{letter-spacing:.23em;text-transform:uppercase;font-size:11px;color:var(--accent)}h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(42px,7vw,78px);line-height:1.1;margin:20px auto;max-width:850px}p{line-height:1.7;color:var(--muted)}.hero p{max-width:540px;margin:0 auto 30px}.btn,button{display:inline-block;background:var(--ink);color:white;border:0;padding:15px 25px;letter-spacing:.08em;cursor:pointer;font-size:12px;text-transform:uppercase}.container{max-width:1160px;margin:auto;padding:75px 24px}.sectionhead{text-align:center;margin-bottom:42px}.sectionhead h2{font-size:clamp(32px,4vw,46px);margin:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.product{background:var(--paper);padding:12px 12px 22px;border:1px solid var(--line)}.product img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#e9e5dc}.product h3{font-family:Georgia,serif;font-size:20px;font-weight:400;margin:18px 8px 6px}.product label{display:flex;align-items:center;gap:10px;margin:10px 8px 0;font-size:13px;color:var(--muted);cursor:pointer}.product input{accent-color:#756d59;width:17px;height:17px}.formwrap{background:#ede8df}.formbox{max-width:740px;margin:auto}.fields{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{margin-bottom:22px}.field.full{grid-column:1/-1}label.caption{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px}input[type=text],input[type=email],textarea{width:100%;padding:14px;background:#fffefa;border:1px solid #d8d1c5;font:inherit;color:var(--ink);border-radius:0}textarea{min-height:110px;resize:vertical}.hint{font-size:12px}button{width:100%}footer{text-align:center;padding:35px 20px;font-size:12px;color:var(--muted)}#status{margin-top:15px;font-size:14px} @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.product h3{font-size:17px}.fields{grid-template-columns:1fr}.hero{padding:70px 20px}.container{padding:55px 18px}}@media(max-width:440px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="#">Dil Se DIY</a><nav><a href="#collection">Collection</a> &nbsp; <a href="#order">Preorder</a></nav></header>
+<section class="hero"><div class="eyebrow">Handmade with intention</div><h1>Little gestures.<br>Lasting memories.</h1><p>Thoughtfully crafted keepsakes and gifts, made personal for every occasion.</p><a class="btn" href="#collection">Explore the collection</a></section>
+<section class="container" id="collection"><div class="sectionhead"><div class="eyebrow">The collection</div><h2>Made to be cherished</h2><p>Choose your favourites below, then complete the preorder form.</p></div><div class="grid" id="products"></div></section>
+<section class="formwrap" id="order"><div class="container formbox"><div class="sectionhead"><div class="eyebrow">A gift, your way</div><h2>Place a preorder</h2><p>Tell us what you'd love. We'll coordinate the details and payment separately.</p></div>
+<form id="orderForm"><div class="fields"><div class="field"><label class="caption" for="name">Full name *</label><input id="name" name="name" type="text" required></div><div class="field"><label class="caption" for="roll">Roll number *</label><input id="roll" name="roll" type="text" required></div><div class="field full"><label class="caption" for="institute">Institute name *</label><input id="institute" name="institute" type="text" required></div><div class="field full"><label class="caption" for="selected">Selected products *</label><textarea id="selected" name="selected" required placeholder="Select products above, or type their names here"></textarea></div><div class="field full"><label class="caption" for="custom">Customization details</label><textarea id="custom" name="custom" placeholder="Colours, names, messages, or any personal touches"></textarea></div><div class="field full"><label class="caption" for="preferences">Other preferences</label><textarea id="preferences" name="preferences" placeholder="Anything else you'd like us to know"></textarea></div></div><button type="submit" id="submitButton">Submit preorder</button><p class="hint">No online payment is required when submitting this form.</p><p id="status" role="status" aria-live="polite"></p></form></div></section>
+<footer>© <span id="year"></span> Dil Se DIY · Thoughtfully handmade</footer>
+<script>
+// Product names and photos — add new items here when needed.
+const PRODUCTS = [
+ {name:'Red and White Flower Bouquet',image:'images/red-white-flower-bouquet.jpg'},
+ {name:'Sunflower Bouquet',image:'images/sunflower-bouquet.jpg'},
+ {name:'Blue and White Flower Bouquet',image:'images/blue-white-flower-bouquet.jpg'},
+ {name:'Bobble Head Sunflower',image:'images/bobble-head-sunflower.jpg'},
+ {name:'Mini Sunflower Keychain',image:'images/mini-sunflower-keychain.jpg'},
+ {name:'Bow Keychain',image:'images/bow-keychain.jpg'},
+ {name:'Evil Eye Keychain',image:'images/evil-eye-keychain.jpg'},
+ {name:'Blue Flower Keychain',image:'images/flower-keychain.jpg'},
+ {name:'Grapes Keychain',image:'images/grapes-keychain.jpg'},
+ {name:'Heart Keychain',image:'images/heart-keychain.jpg'},
+ {name:'Letter Keychain',image:'images/letter-keychain.jpg'},
+ {name:'Rose Keychain',image:'images/rose-keychain.jpg'},
+ {name:'Teddy Bear Keychain',image:'images/teddy-bear-keychain.jpg'},
+ {name:'Tulip Keychain',image:'images/tulip-keychain.jpg'},
+ {name:'Jellyfish',image:'images/jellyfish.jpg'}
 ];
-const qty=products.map(()=>0),$=id=>document.getElementById(id);let orderText='';
-$('products').innerHTML=products.map(([name,price,emoji],i)=>`<article class="product"><div class="emoji">${productPhotos[i] ? `<img class="product-photo" src="images/${productPhotos[i]}.jpg?v=20261022-new" alt="${name}" loading="lazy">` : emoji}</div><h3>${name}</h3><div class="price">₹${price}</div><div class="qty"><button type="button" aria-label="Remove one ${name}" data-i="${i}" data-d="-1">−</button><output id="q${i}">0</output><button type="button" aria-label="Add one ${name}" data-i="${i}" data-d="1">+</button></div></article>`).join('');const bouquetIndices=[9,10,11];const bouquetSelected=()=>bouquetIndices.some(i=>qty[i]>0);const flowerInput=$('flowerPhoto');const flowerPreview=$('flowerPreview');const flowerStatus=$('flowerPhotoStatus');let flowerPreviewURL=null;function showBouquetReference(){$('bouquetReference').style.display=bouquetSelected()?'block':'none'}flowerInput.addEventListener('change',()=>{if(flowerPreviewURL){URL.revokeObjectURL(flowerPreviewURL);flowerPreviewURL=null}flowerPreview.style.display='none';flowerPreview.removeAttribute('src');const file=flowerInput.files&&flowerInput.files[0];if(!file){flowerStatus.textContent='';return}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>8*1024*1024){alert('Please select a JPG, PNG or WebP image smaller than 8 MB.');flowerInput.value='';flowerStatus.textContent='';return}flowerPreviewURL=URL.createObjectURL(file);flowerPreview.src=flowerPreviewURL;flowerPreview.style.display='block';flowerStatus.textContent='Selected: '+file.name+' — this will be included with your submitted order.';$('payment').classList.remove('visible')});function total(){return products.reduce((s,p,i)=>s+p[1]*qty[i],0)}function update(){showBouquetReference();qty.forEach((q,i)=>$('q'+i).textContent=q);$('total').textContent='₹'+total();$('payment').classList.remove('visible')} $('products').addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;const i=+b.dataset.i;qty[i]=Math.max(0,Math.min(99,qty[i]+(+b.dataset.d)));update()});['customer','phone','letter','colours','address'].forEach(id=>$(id).addEventListener('input',()=> $('payment').classList.remove('visible')));
-function order(){const lines=products.flatMap((p,i)=>qty[i]?[`${p[0]} × ${qty[i]} = ₹${p[1]*qty[i]}`]:[]);return ['DIL SE DIY ORDER','Name: '+$('customer').value.trim(),'Phone: '+$('phone').value.trim(),'','Items:',...lines,'','Total: ₹'+total(),'Letter(s): '+($('letter').value.trim()||'Not specified'),'Colours / customisation: '+($('colours').value.trim()||'Not specified'),'Bouquet flower reference photo: '+(bouquetSelected()?(flowerInput.files.length?flowerInput.files[0].name+' (attached on submission)':'No photo selected'):'Not applicable'),'Delivery / pickup: '+($('address').value.trim()||'Not specified')].join('\n')}
-$('generate').onclick=()=>{if(!total()){alert('Please select at least one product.');return}if(!$('customer').value.trim()||!/^\d{10}$/.test($('phone').value.trim())){alert('Please enter your name and a valid 10-digit phone number.');return}if(qty[4]>0&&!$('letter').value.trim()){alert('Please specify the letter(s) for your customisable letter keychain.');return}const amount=total().toFixed(2),ref='DSD'+Date.now().toString(36).toUpperCase();const upi='upi://pay?'+new URLSearchParams({pa:'6378809475@ptsbi',pn:'AMISHA NAINWANI',am:amount,cu:'INR',tn:'Dil Se DIY '+ref}).toString();$('qr').innerHTML='';if(typeof QRCode==='undefined'){alert('QR library could not load. Please connect to the internet and reload the page.');return}new QRCode($('qr'),{text:upi,width:220,height:220,colorDark:'#482f39',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});$('upiLink').href=upi;$('paytotal').textContent='₹'+total();orderText=order()+'\nOrder reference: '+ref;$('summary').textContent=orderText;$('payment').classList.add('visible');$('payment').scrollIntoView({behavior:'smooth',block:'start'});};
-async function copy(t){try{await navigator.clipboard.writeText(t);alert('Copied!')}catch(e){prompt('Copy this text:',t)}}$('copyUPI').onclick=()=>copy('6378809475@ptsbi');$('copyOrder').onclick=()=>copy(orderText);
-
-// PASTE YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL BELOW.
-const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwupaLtUzjsEaq0b1dYzGPByDhdiAMc3Z8G_qDODN_te3P5S5MOb8LPRHZiudI-4MJvtA/exec';
-let currentOrderRef = '', currentSnapshot = '', submissionPending = false;
-const oldGenerate = $('generate').onclick;
-$('generate').onclick = function(){ oldGenerate(); if($('payment').classList.contains('visible')) {currentSnapshot=JSON.stringify([qty,$('customer').value,$('phone').value,$('letter').value,$('colours').value,$('address').value,flowerInput.files[0]?.name||'']);const match=orderText.match(/Order reference: (DSD[A-Z0-9]+)/);currentOrderRef=match?match[1]:''; $('submitStatus').textContent='After paying, enter your UPI transaction reference and submit your order.';} };
-function readPhotoCompressed(file){
- return new Promise((resolve,reject)=>{
-  if(!file){resolve(null);return}
-  const img=new Image(),url=URL.createObjectURL(file);
-  img.onload=()=>{try{const scale=Math.min(1,1400/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);const data=c.toDataURL('image/jpeg',0.78);URL.revokeObjectURL(url);resolve({name:file.name.replace(/[^a-zA-Z0-9._-]/g,'_').slice(0,80),data,mime:'image/jpeg'});}catch(e){URL.revokeObjectURL(url);reject(e)}};
-  img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Unable to read reference photo'))};img.src=url;
- });
-}
-function checkOrderSaved(orderId) {
-  return new Promise((resolve, reject) => {
-    const callback = 'DSDcallback' +
-      Date.now() + Math.random().toString(36).slice(2);
-
-    const script = document.createElement('script');
-    let completed = false;
-
-    const finish = (result, error) => {
-      if (completed) return;
-      completed = true;
-      clearTimeout(timer);
-      delete window[callback];
-      script.remove();
-      if (error) reject(error);
-      else resolve(result);
-    };
-
-    window[callback] = data => finish(data);
-
-    const timer = setTimeout(() => {
-      finish(null, new Error('Confirmation check timed out'));
-    }, 10000);
-
-    script.onerror = () => {
-      finish(null, new Error('Unable to check order'));
-    };
-
-    script.src = ORDER_ENDPOINT +
-      '?action=checkOrder' +
-      '&orderId=' + encodeURIComponent(orderId) +
-      '&callback=' + encodeURIComponent(callback);
-
-    document.body.appendChild(script);
-  });
-}
-
-$('submitOrder').onclick = async () => {
-  if (submissionPending) return;
-
-  if (!ORDER_ENDPOINT.startsWith('https://script.google.com/macros/s/')) {
-    alert('Store owner setup incomplete.');
-    return;
-  }
-
-  const snapshot = JSON.stringify([
-    qty, $('customer').value, $('phone').value,
-    $('letter').value, $('colours').value,
-    $('address').value, flowerInput.files[0]?.name || ''
-  ]);
-
-  if (!$('payment').classList.contains('visible') ||
-      !currentOrderRef || currentSnapshot !== snapshot) {
-    alert('Please generate your payment QR again.');
-    return;
-  }
-
-  const utr = $('reference').value.trim();
-
-  if (!/^[A-Za-z0-9-]{6,40}$/.test(utr)) {
-    alert('Please enter a valid UPI transaction reference.');
-    return;
-  }
-
-  const btn = $('submitOrder');
-  const status = $('submitStatus');
-  const orderId = currentOrderRef;
-
-  submissionPending = true;
-  btn.disabled = true;
-
-  const confirmSaved = () => {
-    status.textContent = '✓ Order ' + orderId +
-      ' received by Dil Se DIY! Payment pending verification.';
-    btn.textContent = 'Order submitted';
-    btn.disabled = true;
-    submissionPending = true;
-    localStorage.setItem('dsd_submitted_' + orderId, 'true');
-  };
-
-  const checkWithRetries = async () => {
-    for (let attempt = 0; attempt < 5; attempt++) {
-      try {
-        const result = await checkOrderSaved(orderId);
-        if (result && result.found) {
-          confirmSaved();
-          return true;
-        }
-      } catch (e) {
-        console.warn('Confirmation check:', e.message);
-      }
-
-      if (attempt < 4) {
-        await new Promise(resolve => setTimeout(resolve, 3000));
-      }
-    }
-    return false;
-  };
-
-  // Check before submitting, in case this order was
-  // already saved during an earlier attempt.
-  status.textContent = 'Checking existing order…';
-
-  if (await checkWithRetries()) return;
-
-  // Do not resubmit an order that was already sent
-  // from this browser.
-  const sentKey = 'dsd_sent_' + orderId;
-
-  if (localStorage.getItem(sentKey)) {
-    status.textContent =
-      'Order may already be saved. Confirmation unavailable. ' +
-      'Please contact Dil Se DIY with order ID ' + orderId +
-      '. Do not submit again.';
-    return;
-  }
-
-  try {
-    status.textContent = 'Uploading order and photo…';
-
-    const photo = await readPhotoCompressed(
-      bouquetSelected() ? flowerInput.files[0] : null
-    );
-
-    const payload = {
-      orderId,
-      name: $('customer').value.trim(),
-      phone: $('phone').value.trim(),
-      items: products.map((p, i) => ({
-        name: p[0],
-        quantity: qty[i]
-      })).filter(x => x.quantity),
-      letter: $('letter').value.trim(),
-      colours: $('colours').value.trim(),
-      address: $('address').value.trim(),
-      total: total(),
-      utr,
-      photo,
-      website: location.href
-    };
-
-    const frame = document.createElement('iframe');
-    frame.name = 'dsd_submit_' + Date.now();
-    frame.style.display = 'none';
-    document.body.appendChild(frame);
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = ORDER_ENDPOINT;
-    form.target = frame.name;
-    form.style.display = 'none';
-
-    const field = document.createElement('textarea');
-    field.name = 'payload';
-    field.value = JSON.stringify(payload);
-    form.appendChild(field);
-    document.body.appendChild(form);
-
-    // Remember that this order has been sent.
-    // A missing confirmation must never trigger
-    // another automatic submission.
-    localStorage.setItem(sentKey, 'true');
-
-    form.submit();
-
-    // Wait for Google Apps Script to save the row.
-    await new Promise(resolve => setTimeout(resolve, 4000));
-
-    status.textContent = 'Verifying your order…';
-
-    if (await checkWithRetries()) {
-      form.remove();
-      frame.remove();
-      return;
-    }
-
-    status.textContent =
-      'Order confirmation is temporarily unavailable. ' +
-      'Your order may have been received. ' +
-      'Please contact Dil Se DIY with order ID ' +
-      orderId + '. Do not submit again.';
-
-    form.remove();
-    frame.remove();
-
-  } catch (e) {
-    status.textContent =
-      'Could not complete order processing: ' + e.message +
-      '. Check with Dil Se DIY before trying again.';
-  }
-};
-</script></body></html>
+// IMPORTANT: Paste your deployed Google Apps Script Web App URL here.
+// Without a valid URL, the form cannot save submissions.
+const ORDER_ENDPOINT = '';
+const grid=document.getElementById('products');const selected=document.getElementById('selected');
+PRODUCTS.forEach((product,index)=>{const card=document.createElement('article');card.className='product';const img=document.createElement('img');img.src=product.image;img.alt=product.name;img.loading='lazy';const title=document.createElement('h3');title.textContent=product.name;const label=document.createElement('label');const check=document.createElement('input');check.type='checkbox';check.value=product.name;check.addEventListener('change',()=>{selected.value=[...document.querySelectorAll('.product input:checked')].map(x=>x.value).join(', ')});label.append(check,document.createTextNode(' Select for preorder'));card.append(img,title,label);grid.append(card)});
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('orderForm').addEventListener('submit',async function(e){e.preventDefault();const status=document.getElementById('status');const button=document.getElementById('submitButton');if(!ORDER_ENDPOINT){status.textContent='Order collection is not configured yet. Please contact the store.';return}button.disabled=true;status.textContent='Submitting your preorder…';const data=Object.fromEntries(new FormData(this));try{const response=await fetch(ORDER_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});const result=await response.json();if(!response.ok||!result.ok)throw new Error('Submission failed');status.textContent='Thank you! Your preorder has been submitted.';this.reset()}catch(error){status.textContent='Your preorder could not be confirmed. Please try again or contact us.'}finally{button.disabled=false}});
+</script>
+</body></html>
