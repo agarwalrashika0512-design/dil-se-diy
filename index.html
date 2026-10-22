@@ -35,7 +35,7 @@ const PRODUCTS = [
 ];
 // IMPORTANT: Paste your deployed Google Apps Script Web App URL here.
 // Without a valid URL, the form cannot save submissions.
-const ORDER_ENDPOINT = '';
+const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwupaLtUzjsEaq0b1dYzGPByDhdiAMc3Z8G_qDODN_te3P5S5MOb8LPRHZiudI-4MJvtA/exec';
 const grid=document.getElementById('products');const selected=document.getElementById('selected');
 PRODUCTS.forEach((product,index)=>{const card=document.createElement('article');card.className='product';const img=document.createElement('img');img.src=product.image;img.alt=product.name;img.loading='lazy';const title=document.createElement('h3');title.textContent=product.name;const label=document.createElement('label');const check=document.createElement('input');check.type='checkbox';check.value=product.name;check.addEventListener('change',()=>{selected.value=[...document.querySelectorAll('.product input:checked')].map(x=>x.value).join(', ')});label.append(check,document.createTextNode(' Select for preorder'));card.append(img,title,label);grid.append(card)});
 document.getElementById('year').textContent=new Date().getFullYear();
